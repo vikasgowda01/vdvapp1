@@ -6,12 +6,14 @@ import { AppComponent } from './app.component';
 import{HttpClientModule} from '@angular/common/http';
 import { NavComponent } from './nav/nav.component';
 import { FormsModule } from '@angular/forms';
-import { ReactiveFormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { SelectDropDownModule } from 'ngx-select-dropdown';
 import { HomeComponent } from './home/home.component';
 import { RegisterComponent } from './register/register.component';
-import { MemberListComponent } from './members/member-list/member-list.component'
+import { MemberListComponent } from './members/member-list/member-list.component';
+import { MemberDetailsComponent } from './members/member-details/member-details.component';
+import { ListsComponent } from './lists/lists.component';
+import { MessagesComponent } from './messages/messages.component'
+import { SharedModule } from './_modules/shared.module';
 
 
 @NgModule({
@@ -20,7 +22,10 @@ import { MemberListComponent } from './members/member-list/member-list.component
     NavComponent,
     HomeComponent,
     RegisterComponent,
-    MemberListComponent
+    MemberListComponent,
+    MemberDetailsComponent,
+    ListsComponent,
+    MessagesComponent
   ],
   imports: [
     BrowserAnimationsModule,
@@ -28,12 +33,8 @@ import { MemberListComponent } from './members/member-list/member-list.component
     AppRoutingModule,
     HttpClientModule,
     FormsModule,
-   
-    ReactiveFormsModule,
-    SelectDropDownModule
-    
-    
-    
+   SharedModule
+      
   ],
   providers: [],
   bootstrap: [AppComponent]
