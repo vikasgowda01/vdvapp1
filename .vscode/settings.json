@@ -1,0 +1,8 @@
+{
+    "markdown.validate.enabled": true,
+    "csharp.inlayHints.parameters.enabled": true,
+    "csharp.inlayHints.types.forLambdaParameterTypes": false,
+    "omnisharp.enableRoslynAnalyzers": true,
+    "omnisharp.enableImportCompletion": true,
+    "omnisharp.organizeImportsOnFormat": true
+}
