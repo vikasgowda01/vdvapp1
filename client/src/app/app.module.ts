@@ -18,7 +18,9 @@ import { TestErrorsComponent } from './errors/test-errors/test-errors.component'
 import { ErrorsInterceptor } from './_interceptors/errors.interceptor';
 import { NotFoundComponent } from './errors/not-found/not-found.component';
 import { ServerErrorComponent } from './errors/server-error/server-error.component';
-
+import { MemberCardComponent } from './members/member-card/member-card.component';
+import { JwtInterceptor } from './_interceptors/jwt.interceptor';
+import { MatSliderModule } from '@angular/material/slider';
 
 @NgModule({
   declarations: [
@@ -32,7 +34,8 @@ import { ServerErrorComponent } from './errors/server-error/server-error.compone
     MessagesComponent,
     TestErrorsComponent,
     NotFoundComponent,
-    ServerErrorComponent
+    ServerErrorComponent,
+    MemberCardComponent
   ],
   imports: [
     BrowserAnimationsModule,
@@ -40,11 +43,13 @@ import { ServerErrorComponent } from './errors/server-error/server-error.compone
     AppRoutingModule,
     HttpClientModule,
     FormsModule,
-   SharedModule
+   SharedModule,
+   MatSliderModule
       
   ],
   providers: [
-    {provide: HTTP_INTERCEPTORS, useClass: ErrorsInterceptor, multi: true}
+    {provide: HTTP_INTERCEPTORS, useClass: ErrorsInterceptor, multi: true},
+    {provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true}
   ],
   bootstrap: [AppComponent]
 })
