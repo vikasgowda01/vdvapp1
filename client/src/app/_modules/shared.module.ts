@@ -6,7 +6,10 @@ import { ToastrModule } from 'ngx-toastr';
 import { TabsModule } from 'ngx-bootstrap/tabs';
 import { MatTabsModule } from '@angular/material/tabs';
 import { NgxGalleryModule } from '@kolkov/ngx-gallery';
-
+import { MdbDropdownModule } from 'mdb-angular-ui-kit/dropdown';
+import { MdbRippleModule } from 'mdb-angular-ui-kit/ripple';
+import {MatSelectModule} from '@angular/material/select';
+import { NgxSpinnerModule } from 'ngx-spinner';
 
 
 @NgModule({
@@ -18,6 +21,12 @@ import { NgxGalleryModule } from '@kolkov/ngx-gallery';
     //TabsModule.forRoot(),
     NgxGalleryModule,
     MatTabsModule,
+    MdbDropdownModule, 
+    MdbRippleModule,
+    MatSelectModule,
+    NgxSpinnerModule.forRoot({
+        type:'line-scale-party'
+    }),
     ToastrModule.forRoot({
       positionClass:'toast-bottom-right'
       
@@ -28,7 +37,11 @@ import { NgxGalleryModule } from '@kolkov/ngx-gallery';
     SelectDropDownModule,
     ToastrModule,
     MatTabsModule,
-    NgxGalleryModule
+    NgxGalleryModule,
+    MdbDropdownModule, 
+    MdbRippleModule,
+    MatSelectModule,
+    NgxSpinnerModule
     
 
   ]

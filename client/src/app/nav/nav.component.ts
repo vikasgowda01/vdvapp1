@@ -5,7 +5,8 @@ import { Observable, of } from 'rxjs';
 import { Router } from '@angular/router';
 import { ToastrModule } from 'ngx-toastr/toastr/toastr.module';
 import { ToastrService } from 'ngx-toastr';
-
+import { AfterViewInit, ViewChild } from '@angular/core';
+import { MdbDropdownDirective } from 'mdb-angular-ui-kit/dropdown';
 
 @Component({
   selector: 'app-nav',
@@ -14,15 +15,17 @@ import { ToastrService } from 'ngx-toastr';
 })
 export class NavComponent implements OnInit{
   model: any={};
+ 
   //currentUser$:Observable<User | null>=of(null);
 
 
   constructor(public accountService: AccountService, private router: Router,private toastr:ToastrService) {}
 
   ngOnInit(): void {
-  
+    }
   //this.currentUser$=this.accountService.currentUser$;
-  }
+  
+ 
 
   login(){
     this.accountService.login(this.model).subscribe({
