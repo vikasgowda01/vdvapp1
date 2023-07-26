@@ -10,6 +10,7 @@ import { MdbDropdownModule } from 'mdb-angular-ui-kit/dropdown';
 import { MdbRippleModule } from 'mdb-angular-ui-kit/ripple';
 import {MatSelectModule} from '@angular/material/select';
 import { NgxSpinnerModule } from 'ngx-spinner';
+import { FileUploadModule } from 'ng2-file-upload';
 
 
 @NgModule({
@@ -30,7 +31,8 @@ import { NgxSpinnerModule } from 'ngx-spinner';
     ToastrModule.forRoot({
       positionClass:'toast-bottom-right'
       
-    })
+    }),
+    FileUploadModule
   ],
   exports:[
     ReactiveFormsModule,
@@ -41,7 +43,8 @@ import { NgxSpinnerModule } from 'ngx-spinner';
     MdbDropdownModule, 
     MdbRippleModule,
     MatSelectModule,
-    NgxSpinnerModule
+    NgxSpinnerModule,
+    FileUploadModule
     
 
   ]

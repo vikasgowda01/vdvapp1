@@ -40,6 +40,7 @@ namespace API.Controllers
             {
                 username =user.UserName,
                 Token = _TokenService.CreateToken(user)
+                
             };
 
         }
@@ -47,7 +48,9 @@ namespace API.Controllers
         [HttpPost("login")]
         public async Task<ActionResult<UserDto>> Login(LoginDto loginDto)
         {
-            var user= await _context.Users.SingleOrDefaultAsync(x => x.UserName ==loginDto.username);
+            var user= await _context.Users
+            .Include(p=>p.Photos)
+            .SingleOrDefaultAsync(x => x.UserName ==loginDto.username);
             if (user == null) return Unauthorized("Invalid username");
             //password check
             using var hmac = new HMACSHA512(user.PasswordSalt);//algorithm to check password salt
@@ -60,7 +63,8 @@ namespace API.Controllers
             return new UserDto
             {
                 username =user.UserName,
-                Token = _TokenService.CreateToken(user)
+                Token = _TokenService.CreateToken(user),
+                PhotoUrl = user.Photos.FirstOrDefault(x=> x.IsMain)?.Url
             };
 
         }
