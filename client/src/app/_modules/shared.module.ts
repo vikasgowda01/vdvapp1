@@ -11,7 +11,7 @@ import { MdbRippleModule } from 'mdb-angular-ui-kit/ripple';
 import {MatSelectModule} from '@angular/material/select';
 import { NgxSpinnerModule } from 'ngx-spinner';
 import { FileUploadModule } from 'ng2-file-upload';
-
+import { BsDatepickerModule } from 'ngx-bootstrap/datepicker';
 
 @NgModule({
   declarations: [],
@@ -25,6 +25,7 @@ import { FileUploadModule } from 'ng2-file-upload';
     MdbDropdownModule, 
     MdbRippleModule,
     MatSelectModule,
+    
     NgxSpinnerModule.forRoot({
         type:'line-scale-party'
     }),
@@ -32,7 +33,8 @@ import { FileUploadModule } from 'ng2-file-upload';
       positionClass:'toast-bottom-right'
       
     }),
-    FileUploadModule
+    FileUploadModule,
+    BsDatepickerModule.forRoot()
   ],
   exports:[
     ReactiveFormsModule,
@@ -44,7 +46,8 @@ import { FileUploadModule } from 'ng2-file-upload';
     MdbRippleModule,
     MatSelectModule,
     NgxSpinnerModule,
-    FileUploadModule
+    FileUploadModule,
+    BsDatepickerModule
     
 
   ]
