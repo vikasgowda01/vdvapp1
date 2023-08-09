@@ -11,6 +11,7 @@ using AutoMapper;
 using System.Security.Claims;
 using System.Security.Cryptography.X509Certificates;
 using System.Runtime.CompilerServices;
+using API.Helpers;
 
 namespace API.Controllers
 {   
@@ -32,9 +33,18 @@ namespace API.Controllers
         //[AllowAnonymous]
         [HttpGet]//endpoint
         //ActionResult produces response type 200 ok success
-        public async Task<ActionResult<IEnumerable<MemberDto>>> GetUsers(){
-            var users = await _userRepository.GetMembersAsync();
+        public async Task<ActionResult<PagedList<MemberDto>>> GetUsers([FromQuery]UserParams userParams){
+            
+            var currentUser = await _userRepository.GetUserByUsernameAsync(User.GetUsername());
+            userParams.CurrentUsername = currentUser.UserName;
 
+            if(string.IsNullOrEmpty(userParams.Gender))
+            {
+                userParams.Gender =currentUser.Gender == "male" ? "female" : "male";
+            }
+            var users = await _userRepository.GetMembersAsync(userParams);
+            
+            Response.AddPaginationHeader(new PaginationHeader(users.CurrentPage, users.PageSize, users.TotalCount, users.TotalPages));
             //var usersToReturn = _mapper.Map<IEnumerable<MemberDto>>(users);
             return Ok(users);
             

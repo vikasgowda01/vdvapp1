@@ -30,7 +30,10 @@ namespace API.Services
             // adding list of claims - it might be more claims done by user
             var claims =new List<Claim>
              {
-                new Claim(JwtRegisteredClaimNames.NameId, user.UserName)//here we are using username to claim
+                new Claim(JwtRegisteredClaimNames.NameId, user.Id.ToString()),
+                new Claim(JwtRegisteredClaimNames.UniqueName, user.UserName)
+                
+                //here we are using username to claim
              };
             // credentials here we speicy key, algorithm, and signature
              var creds = new SigningCredentials(_key, SecurityAlgorithms.HmacSha512Signature);
