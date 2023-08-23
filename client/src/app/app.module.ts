@@ -26,6 +26,8 @@ import { LoadingInterceptor } from './_interceptors/loading.interceptor';
 import { PhotoEditorComponent } from './members/photo-editor/photo-editor.component';
 import { TextInputComponent } from './_forms/text-input/text-input.component';
 import { DatePickerComponent } from './_forms/date-picker/date-picker.component';
+import { MemberMessagesComponent } from './members/member-messages/member-messages.component';
+import { TabsModule } from 'ngx-bootstrap/tabs';
 
 @NgModule({
   declarations: [
@@ -34,7 +36,7 @@ import { DatePickerComponent } from './_forms/date-picker/date-picker.component'
     HomeComponent,
     RegisterComponent,
     MemberListComponent,
-    MemberDetailsComponent,
+   
     ListsComponent,
     MessagesComponent,
     TestErrorsComponent,
@@ -45,6 +47,7 @@ import { DatePickerComponent } from './_forms/date-picker/date-picker.component'
     PhotoEditorComponent,
     TextInputComponent,
     DatePickerComponent
+   
   ],
   imports: [
     BrowserAnimationsModule,
@@ -54,7 +57,8 @@ import { DatePickerComponent } from './_forms/date-picker/date-picker.component'
     FormsModule,
    SharedModule,
    MatSliderModule,
-   ReactiveFormsModule
+   ReactiveFormsModule,
+   TabsModule.forRoot()
       
   ],
   providers: [

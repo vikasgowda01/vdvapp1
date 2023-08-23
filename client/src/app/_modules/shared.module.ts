@@ -22,12 +22,13 @@ import { TimeagoModule } from "ngx-timeago";
     CommonModule,
     ReactiveFormsModule,
     SelectDropDownModule,
-    //TabsModule.forRoot(),
+    TabsModule.forRoot(),
     NgxGalleryModule,
     MatTabsModule,
     MdbDropdownModule, 
     MdbRippleModule,
     MatSelectModule,
+
     
     NgxSpinnerModule.forRoot({
         type:'line-scale-party'
@@ -56,7 +57,8 @@ import { TimeagoModule } from "ngx-timeago";
     BsDatepickerModule,
     PaginationModule,
     ButtonsModule,
-    TimeagoModule
+    TimeagoModule,
+    TabsModule
 
   ]
 })
