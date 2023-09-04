@@ -5,6 +5,8 @@ using System.Text;
 using System.Security.Claims;
 //using Microsoft.IdentityModel.JsonWebTokens;
 using Microsoft.IdentityModel.Tokens;
+using Microsoft.AspNetCore.Identity;
+
 
 namespace API.Services
 {
@@ -14,8 +16,10 @@ namespace API.Services
         //two type of keys
         //SymmetricSecurityKey same key is used encrypt and decrypt the data
         //ASymmetricSecurityKey when server needs encrypt something and client needs to decrypt something that time we need both private and public key, private key with server and public key in client
-        public TokenService(IConfiguration config)//we are going to store super secret key, we need to configure inject Iconfiguration config
+        private readonly UserManager<AppUser> _userManager;
+        public TokenService(IConfiguration config, UserManager<AppUser> userManager)//we are going to store super secret key, we need to configure inject Iconfiguration config
         {
+            _userManager = userManager;
             _key =new SymmetricSecurityKey(Encoding.UTF8.GetBytes(config["TokenKey"]));
             //symmetricsecuritykey only takes values in bytes so we are using encoding.utf.getbytes
             //config[TokenKey] contains key value pair this we specified in the Appsettings.development.json file
@@ -23,7 +27,7 @@ namespace API.Services
         }
 
         //creating a token
-        public string CreateToken(AppUser user)
+        public async Task<string> CreateToken(AppUser user)
         {   
             //claim that u are u 
             // bit of information user claims 
@@ -35,6 +39,10 @@ namespace API.Services
                 
                 //here we are using username to claim
              };
+
+             var roles = await _userManager.GetRolesAsync(user);
+
+             claims.AddRange(roles.Select(role => new Claim(ClaimTypes.Role, role)));
             // credentials here we speicy key, algorithm, and signature
              var creds = new SigningCredentials(_key, SecurityAlgorithms.HmacSha512Signature);
             // describing the token we are going to return

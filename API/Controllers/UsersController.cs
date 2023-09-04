@@ -31,6 +31,7 @@ namespace API.Controllers
                
         }
         //[AllowAnonymous]
+        
         [HttpGet]//endpoint
         //ActionResult produces response type 200 ok success
         public async Task<ActionResult<PagedList<MemberDto>>> GetUsers([FromQuery]UserParams userParams){
@@ -49,6 +50,8 @@ namespace API.Controllers
             return Ok(users);
             
         }
+
+        
         [HttpGet("{username}")]
         public async Task<ActionResult<MemberDto>> GetUser(string username)
         {
